@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimerUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public Text timerText;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float t = GameManager.instance.survivalTime;
+
+        int minutes = Mathf.FloorToInt(t / 60);
+        int seconds = Mathf.FloorToInt(t % 60);
+
+        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 }

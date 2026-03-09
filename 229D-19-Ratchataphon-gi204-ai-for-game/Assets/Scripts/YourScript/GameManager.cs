@@ -1,16 +1,32 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager instance;
+
+    public bool isGameRunning = true;
+
+    public float survivalTime = 0f;
+
+    void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!isGameRunning) return;
+
+        survivalTime += Time.deltaTime;
+    }
+
+    public void GameOver()
+    {
+        isGameRunning = false;
+
+        PlayerPrefs.SetFloat("LastTime", survivalTime);
+
+        SceneManager.LoadScene("Result");
     }
 }

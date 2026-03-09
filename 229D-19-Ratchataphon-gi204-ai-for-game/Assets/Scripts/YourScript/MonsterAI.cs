@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float speed = 3f;
+    Transform player;
+
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (player == null) return;
+
+        Vector3 dir = (player.position - transform.position).normalized;
+        transform.position += dir * speed * Time.deltaTime;
     }
 }

@@ -1,16 +1,29 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ResultScreen : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Text resultText;
+
     void Start()
     {
-        
+        float time = PlayerPrefs.GetFloat("LastTime", 0);
+
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+
+        resultText.text = "Time Survived\n" +
+            minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Retry()
     {
-        
+        SceneManager.LoadScene("Game");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
