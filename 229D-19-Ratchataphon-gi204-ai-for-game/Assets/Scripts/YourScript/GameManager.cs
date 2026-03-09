@@ -7,14 +7,10 @@ public class GameManager : MonoBehaviour
     public bool isGameRunning = true;
     public float survivalTime = 0f;
 
-    void Start()
-    {
-        Time.timeScale = 1f;
-    }
-
     void Awake()
     {
         instance = this;
+        isGameRunning = true;
     }
 
     void Update()
