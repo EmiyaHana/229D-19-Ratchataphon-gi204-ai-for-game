@@ -12,9 +12,10 @@ public class MonsterAI : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
+        if (!GameManager.instance.isGameRunning) return;
 
         Vector3 dir = (player.position - transform.position).normalized;
+
         transform.position += dir * speed * Time.deltaTime;
     }
 }

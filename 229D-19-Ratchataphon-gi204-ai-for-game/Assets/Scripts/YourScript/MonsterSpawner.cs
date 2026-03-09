@@ -3,10 +3,10 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     public GameObject monsterPrefab;
-    public float spawnInterval = 20f;
+    public float spawnInterval = 15f;
     public float arenaSize = 20f;
 
-    float timer = 0;
+    float timer = 0f;
 
     void Update()
     {
@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour
         if (timer >= spawnInterval)
         {
             SpawnMonster();
-            timer = 0;
+            timer = 0f;
         }
     }
 

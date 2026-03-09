@@ -1,13 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     public bool isGameRunning = true;
-
     public float survivalTime = 0f;
+
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
 
     void Awake()
     {
@@ -24,9 +27,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameRunning = false;
-
-        PlayerPrefs.SetFloat("LastTime", survivalTime);
-
-        SceneManager.LoadScene("Result");
+        Time.timeScale = 0f;
     }
 }
